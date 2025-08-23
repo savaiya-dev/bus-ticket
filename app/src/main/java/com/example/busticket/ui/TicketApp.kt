@@ -41,4 +41,3 @@ fun TicketApp() {
     }
 }
 
-// TODO: Implement AdminPanel, UserPanel, TicketView composables
