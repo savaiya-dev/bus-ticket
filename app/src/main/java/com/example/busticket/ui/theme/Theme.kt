@@ -1,23 +1,27 @@
 package com.example.busticket.ui.theme
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorPalette = darkColors(
-    primary = androidx.compose.ui.graphics.Color(0xFF1976D2),
-    primaryVariant = androidx.compose.ui.graphics.Color(0xFF1565C0),
-    secondary = androidx.compose.ui.graphics.Color(0xFFFFA000)
+private val DarkColorPalette = darkColorScheme(
+    primary = Color(0xFF1976D2),
+    secondary = Color(0xFFFFA000),
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
-
-// You can add light/dynamic color palettes here for future extensibility
 
 @Composable
 fun BusTicketTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = DarkColorPalette,
-        typography = androidx.compose.material.Typography(),
-        shapes = androidx.compose.material.Shapes(),
+        colorScheme = DarkColorPalette,
+        typography = androidx.compose.material3.Typography(),
+        shapes = androidx.compose.material3.Shapes(),
         content = content
     )
 }

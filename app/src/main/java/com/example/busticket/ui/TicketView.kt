@@ -5,8 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,15 +29,15 @@ import java.util.*
 fun TicketView(zone: Int, color: Color) {
     var showQr by remember { mutableStateOf(false) }
     var timeLeft by remember { mutableStateOf(8 * 60 * 60 * 1000L) } // 8 hours in ms
-    var currentTime by remember { mutableStateOf(System.currentTimeMillis()) }
     val formatter = remember { SimpleDateFormat("EEE, MMM d, hh:mm:ss a", Locale.getDefault()) }
+    val now = remember { Date() }
+    val expiry = remember { Date(now.time + timeLeft) }
 
     // Timer
     LaunchedEffect(Unit) {
         while (timeLeft > 0) {
             delay(1000)
             timeLeft -= 1000
-            currentTime += 1000
         }
     }
 
@@ -47,7 +47,6 @@ fun TicketView(zone: Int, color: Color) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
             .background(color),
-        elevation = 12.dp
     ) {
         Column(
             modifier = Modifier
@@ -82,7 +81,7 @@ fun TicketView(zone: Int, color: Color) {
             Text("BUS INTERSTATE PASS", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.White)
             Text("$zone ZONES", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.White)
             Spacer(Modifier.height(8.dp))
-            Text(formatter.format(Date(currentTime)), color = Color.White, fontSize = 14.sp)
+            Text(formatter.format(now), color = Color.White, fontSize = 14.sp)
             Text("Expires in", color = Color.White, fontSize = 12.sp)
             val hours = (timeLeft / (1000 * 60 * 60)).toInt()
             val minutes = ((timeLeft / (1000 * 60)) % 60).toInt()
