@@ -4,7 +4,11 @@
         {
             "label": "Build Android App",
             "type": "shell",
-            "command": "./gradlew assembleDebug",
+            "command": "gradle",
+            "args": [":app:assembleDebug"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
             "group": "build",
             "problemMatcher": ["$javac"],
             "presentation": {

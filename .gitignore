@@ -1,0 +1,28 @@
+# Local SDK paths (root and modules)
+local.properties
+
+# Gradle/Kotlin caches and generated build output at any depth
+.gradle/
+.kotlin/
+build/
+.cxx/
+.externalNativeBuild/
+captures/
+*.apk
+*.aab
+*.ap_
+
+# Android Studio / IntelliJ local project state
+.idea/
+*.iml
+
+# Local signing material
+*.jks
+*.keystore
+keystore.properties
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Keep shared build scripts, gradle.properties, and any future Gradle wrapper tracked.
